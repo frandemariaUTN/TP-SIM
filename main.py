@@ -33,13 +33,14 @@ class Tecnico:
         self.nombre = nombre
         self.tipo = tipo  # 'aprendiz' o 'experimentado'
         self.porcentaje = porcentaje  # probabilidad de ser asignado
-        self.tiempo_min = tiempo_min
-        self.tiempo_max = tiempo_max
-        self.precio = precio
+        self.tiempo_min = tiempo_min #hay que ingresarlo como parametro
+        self.tiempo_max = tiempo_max #hay que ingresarlo como parametro
+        self.precio = precio 
         self.estado = 'libre'  # 'libre', 'ocupado'
         self.cliente_actual = None
         self.tiempo_fin_servicio = None
-
+        self.cola = []  # Cola propia del técnico
+    
     def esta_libre(self):
         return self.estado == 'libre'
 
@@ -59,7 +60,7 @@ class Simulacion:
         self.eventos_futuros = [] #aca se van almacenando los eventos que van a ocurrir
         self.costo_total_cupones = 0 #Acumula el costo de descuentos aplicados cuando un cliente espera más de 30 minutos.
         self.tiempo_actual = 0 #aca se va acumulando el tiempo
-        self.cola_espera = [] #los clientes que estan en cola se guardan aca
+        #self.cola_espera = [] #los clientes que estan en cola se guardan aca pero se mezclan
 
     def agregar_tecnico(self, nombre, tipo, porcentaje, tiempo_min, tiempo_max, precio):
         tecnico = Tecnico(nombre, tipo, porcentaje, tiempo_min, tiempo_max, precio)
@@ -101,8 +102,8 @@ class Simulacion:
             self.calcular_evento_futuro(cliente, duracion)
         else:
             cliente.estado = 'esperando'
-            self.cola_espera.append(cliente)
-            print(f"[{self.tiempo_actual:.2f}] {cliente} queda en espera (técnico ocupado)")
+            tecnico_seleccionado.cola.append(cliente)  # Cola propia del técnico
+            print(f"[{self.tiempo_actual:.2f}] {cliente} queda en espera en cola de {tecnico_seleccionado.nombre} (técnico ocupado)")
 
     def registrar_evento(self, tiempo_evento, tecnico, tipo_evento):
         self.eventos_futuros.append((tiempo_evento, tecnico, tipo_evento))
@@ -159,18 +160,17 @@ class Simulacion:
             tecnico.tiempo_fin_servicio = None
             print(f"[{self.tiempo_actual:.2f}] {tecnico.nombre} quedó LIBRE")
 
-            # Atender siguiente cliente de la cola
-            if self.cola_espera:
-                siguiente_cliente = self.cola_espera.pop(0)
-                siguiente_cliente.tecnico_asignado = tecnico
-                tecnico.estado = 'ocupado'
-                tecnico.cliente_actual = siguiente_cliente
-                siguiente_cliente.estado = 'siendo_atendido'
-                siguiente_cliente.tiempo_inicio_servicio = self.tiempo_actual
+        # Atender siguiente cliente de la cola propia del técnico
+        if tecnico.cola:
+            siguiente_cliente = tecnico.cola.pop(0)
+            siguiente_cliente.tecnico_asignado = tecnico
+            tecnico.estado = 'ocupado'
+            tecnico.cliente_actual = siguiente_cliente
+            siguiente_cliente.estado = 'siendo_atendido'
+            siguiente_cliente.tiempo_inicio_servicio = self.tiempo_actual
 
-                duracion = uniforme(tecnico.tiempo_min, tecnico.tiempo_max)
-                self.calcular_evento_futuro(siguiente_cliente, duracion)
-
+            duracion = uniforme(tecnico.tiempo_min, tecnico.tiempo_max)
+            self.calcular_evento_futuro(siguiente_cliente, duracion)
 
 
 if __name__ == "__main__":
