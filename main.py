@@ -176,13 +176,16 @@ class Simulacion:
 if __name__ == "__main__":
     sim = Simulacion()
 
-    # Agregamos técnicos
+    # Agregar técnicos
     sim.agregar_tecnico("Carlos", "experimentado", 0.5, 20, 40, 3000)
     sim.agregar_tecnico("Lucía", "aprendiz", 0.5, 30, 50, 2000)
 
-    # Agregamos 5 clientes, con tiempos de llegada automáticos (U[2, 12])
-    for i in range(1, 6):
+    tiempos_llegada = []
+
+    # Agregar 100 clientes con tiempos automáticos y asignar técnico
+    for i in range(1, 101):
         cliente = sim.agregar_cliente(i)
+        tiempos_llegada.append(cliente.tiempo_llegada)
         sim.tiempo_actual = cliente.tiempo_llegada
         sim.asignar_tecnico(cliente)
 
