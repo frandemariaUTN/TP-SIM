@@ -57,7 +57,10 @@ def correr_simulacion():
                     fila['cola'][0] if len(fila['cola']) > 0 else '-',
                     fila['cola'][1] if len(fila['cola']) > 1 else '-',
                     fila['cola'][2] if len(fila['cola']) > 2 else '-',
-                    fila['cupones']
+                    fila.get('id_cliente', '-'),
+                    fila.get('estado_cliente', '-'),
+                    fila.get('espera_acumulada', '-'),
+                    fila['cupones'],
                 ))
 
     except Exception as e:
@@ -168,8 +171,9 @@ columnas = [
     "Hora Fin Diagnóstico", "Importe", "Espera",
     "Estado Téc. A", "Estado Téc. B", "Estado Aprendiz",
     "Cola A", "Cola B", "Cola Aprendiz",
-    "Total Cupones"
-]
+    "ID Cliente", "Estado Cliente", "Espera Acum.",
+    "Total Cupones"]
+
 
 tree = ttk.Treeview(frame_tabla, columns=columnas, show="headings")
 for col in columnas:

@@ -15,12 +15,24 @@ def uniforme(min_val, max_val):
 class Cliente:
     def __init__(self, id_cliente, tiempo_llegada):
         self.id = id_cliente
-        self.tiempo_llegada = tiempo_llegada # tiempo en que llega el determinado cliente
-        self.tiempo_inicio = None
-        self.tiempo_fin = None
-        self.tecnico_asignado = None
+        self.tiempo_llegada = tiempo_llegada  # Cuándo llega el cliente
+        self.tiempo_inicio = None             # Cuándo empieza a ser atendido
+        self.tiempo_fin = None                # Cuándo termina de ser atendido
+        self.tecnico_asignado = None          # Técnico que lo atendió
         self.descuento = False
-        self.estado = "esperando"
+        self.estado = "esperando"             # 'esperando', 'siendo_atendido', 'completado'
+        self.espera = 0              # Tiempo total acumulado en espera
+        self.tiempo_atencion = None # Para marcar cuándo entra a la cola (y medir espera)
+
+    def obtener_tiempo_espera(self): # para poder mostrar el tiempo que espera el cliente
+        if self.tiempo_inicio is not None:
+            return round (self.tiempo_inicio - self.tiempo_llegada, 2)
+        return "-"
+
+    def obtener_tiempo_atencion(self): # para poder obtener el tiempo que lo atienden
+        if self.tiempo_inicio is not None and self.tiempo_fin is not None:
+            return round (self.tiempo_fin - self.tiempo_inicio, 2)
+        return "-"
 
 # ------------------------------
 # Clase Técnico: puede ser aprendiz o experimentado
@@ -56,6 +68,8 @@ class Simulacion:
         self.llegada_min = llegada_min # vendria a ser el tiempo de llegada minimo determinado para el evento donde llega un cliente
         self.llegada_max = llegada_max # vendria a ser el tiempo de llegada maximo determinado para el evento donde llega un cliente
 
+        self.ultimo_cliente = None  # Mi ultimo cliente en evento
+        
     def agregar_tecnico(self, nombre, tipo, tiempo_min, tiempo_max, probabilidad):
         self.tecnicos.append(Tecnico(nombre, tipo, tiempo_min, tiempo_max, probabilidad)) #agregamos cada tecnico al vector
 
@@ -68,6 +82,7 @@ class Simulacion:
             return
 
         cliente = Cliente(self.proximo_id_cliente, tiempo_llegada)
+        self.cliente = cliente  # ← para que esté disponible en el registro de resultados
         self.proximo_id_cliente += 1
         self.clientes.append(cliente)
         self.eventos.append((tiempo_llegada, "llegada", cliente))
@@ -88,6 +103,10 @@ class Simulacion:
                                     # - tipo → Es una cadena de texto que indica el tipo de evento ("llegada", "fin_atencion").
                                     # - obj → Es el objeto asociado al evento, que puede ser un Cliente o un Técnico.
         self.tiempo_actual = tiempo # se actualiza el RELOJ
+        
+        cliente = obj # el objeto del evento es el cliente en este caso
+        acum_espera = 0
+
         fila = {
             'iteracion': len(self.resultados),
             'reloj': round(self.tiempo_actual, 2),
@@ -103,11 +122,15 @@ class Simulacion:
             'espera': '-',
             'tecnicos': [t.estado for t in self.tecnicos], # muestra los tecnicos con su estados (ocupado o libre)
             'cola': [len(t.cola) for t in self.tecnicos], # muestra la cantidad que tienen el tecnico en cola
-            'cupones': self.costo_cupones # muestra la acumulacion que hay de cupones
+            'id_cliente': cliente.id if cliente else '---',
+            'estado_cliente': cliente.estado if cliente else '---',
+            'espera_acumulada': cliente.obtener_tiempo_espera() if cliente else '---',
+            'tiempo_atencion': acum_espera if cliente else '---',
+            'cupones': self.costo_cupones
         }
+        
 
         if tipo == "llegada":
-            cliente = obj # el objeto del evento es el cliente en este caso
             tecnico, rnd_asignacion = self.seleccionar_tecnico() # al llamar a la funcion nos devuelve el tecnico asignado
             cliente.tecnico_asignado = tecnico # aqui se lo asignamos a ese cliente
 
@@ -141,7 +164,7 @@ class Simulacion:
             espera = cliente.tiempo_inicio - cliente.tiempo_llegada # aqui es donde calculamos el tiempo en que inicio el diagnostica para el cliente - el tiempo en el que fue su llegada
             # determinamos si hay que cobrarle o no descuento si ese tiempo es mayor a 30 minutos
 
-            if espera > 30:
+            if espera > 30: # si es mayo a 30min
                 cliente.descuento = True
                 self.costo_cupones += 1500
 
@@ -152,6 +175,8 @@ class Simulacion:
             fila['hora_fin_diagnostico'] = round(cliente.tiempo_fin, 2) # registramos la hora que finalizo el diagnostico
             fila['importe'] = importe # este es el importe que se le va a cobrar al cliente sin aplicar descuentos
             fila['espera'] = round(espera, 2) # se muestra el tiempo que calculamos que espero
+            self.ultimo_cliente = cliente 
+            acum_espera += cliente.obtener_tiempo_atencion() 
 
             tecnico = cliente.tecnico_asignado 
             if tecnico.cola: # nos fijamos si el tecnico tiene gente en cola
@@ -163,6 +188,7 @@ class Simulacion:
                 tecnico.cliente_actual = siguiente # actualizamos el nuevo cliente para el tecnico
                 self.eventos.append((siguiente.tiempo_fin, "fin_atencion", siguiente)) # registrando el momento en que finalizará el diagnóstico del cliente
                 # se agrega un nuevo evento a la lista de eventos futuros.
+
             else:
                 tecnico.estado = "libre" # si no hay nadie en cola el tecnico vuelve a estar libre
                 tecnico.cliente_actual = None # seteamos el cliente
@@ -171,6 +197,7 @@ class Simulacion:
         if total_en_colas > self.max_en_colas: # preguntamos si ese total es mayor al maximo que hemos tenido, esto lo vamos a usar para determinar si hay que agregar mas sillas
             self.max_en_colas = total_en_colas # establecemos el nuevo maximo
 
+        cliente = self.ultimo_cliente
         self.resultados.append(fila)
 
         if tipo == "llegada": # volvemos a preguntar si es de tipo llegada el evento para seguir generando nuevas llegadas de clientes 
@@ -178,6 +205,31 @@ class Simulacion:
 
     def correr(self):
         self.resultados = [] # se crea la lista vacia donde vamos a ir almacenando los resultados de cada simulacion, es decir todos los datos almacenados en la variable fila
+
+        # Agregar fila de inicio
+        cliente = self.ultimo_cliente
+        self.resultados.append({
+            'iteracion': 0,
+            'reloj': 0,
+            'evento': '',
+            'rnd_llegada': '',
+            'prox_llegada': '',
+            'rnd_asignacion': '',
+            'tecnico_asignado': '',
+            'rnd_diagnostico': '',
+            'tiempo_diagnostico': '',
+            'hora_fin_diagnostico': '',
+            'importe': '',
+            'espera': '',
+            'tecnicos': [''] * 3,
+            'cola': [''] * 3,
+            'id_cliente': cliente.id if cliente else '---',
+            'estado_cliente': cliente.estado if cliente else '---',
+            'espera_acumulada': cliente.obtener_tiempo_espera() if cliente else '---',
+            'tiempo_atencion': cliente.obtener_tiempo_atencion() if cliente else '---',
+            'cupones': self.costo_cupones
+        })
+
 
         self.generar_llegada_cliente() # activamos la secuencia de llegadas de los clientes
 
@@ -188,6 +240,7 @@ class Simulacion:
             self.procesar_evento(evento) # llamamos a la funcion para procesar dicho evento
 
         # Agregar fila de resumen final
+        cliente = self.ultimo_cliente
         self.resultados.append({
             'iteracion': len(self.resultados),
             'reloj': round(self.tiempo_actual, 2),
@@ -203,8 +256,14 @@ class Simulacion:
             'espera': '-',
             'tecnicos': [t.estado for t in self.tecnicos],
             'cola': [len(t.cola) for t in self.tecnicos],
+            'id_cliente': cliente.id if cliente else '---',
+            'estado_cliente': cliente.estado if cliente else '---',
+            'espera_acumulada': cliente.obtener_tiempo_espera() if cliente else '---',
+            'tiempo_atencion': cliente.obtener_tiempo_atencion() if cliente else '---',
             'cupones': self.costo_cupones
         })
+
+
 
         # Mostrar métricas finales
         dias_simulados = len(self.resultados)
@@ -217,14 +276,14 @@ class Simulacion:
         print(f"Total de dinero en cupones entregados: ${self.costo_cupones}")
         print(f"Cantidad mínima de sillas necesarias: {self.max_en_colas}")
 
-        # # Guardar vector de estado en CSV para que los resultados queden almacenados
-        # with open("vector_estado.csv", "w", newline="", encoding="utf-8") as f:
-        #     # - Abre (o crea) el archivo vector_estado.csv en modo escritura ("w").
-        #     # - Usa newline="" para evitar líneas vacías innecesarias en el archivo.
-        #     # - Establece utf-8 como codificación, asegurando compatibilidad con caracteres especiales
-        #     writer = csv.DictWriter(f, fieldnames=self.resultados[0].keys()) # - Crea un escritor CSV que estructurará los datos en columnas, usando los nombres de campo (keys()) de los diccionarios en self.resultados.
-        #     writer.writeheader() # - Escribe la primera línea del archivo con los nombres de las columnas (como "evento", "reloj", "espera", etc.).
-        #     writer.writerows(self.resultados) # - Escribe todas las filas de la lista self.resultados, cada una representando un estado del sistema en algún instante de la simulación.
+        # Guardar vector de estado en CSV para que los resultados queden almacenados
+        with open("vector_estado.csv", "w", newline="", encoding="utf-8") as f:
+            # - Abre (o crea) el archivo vector_estado.csv en modo escritura ("w").
+            # - Usa newline="" para evitar líneas vacías innecesarias en el archivo.
+            # - Establece utf-8 como codificación, asegurando compatibilidad con caracteres especiales
+            writer = csv.DictWriter(f, fieldnames=self.resultados[0].keys()) # - Crea un escritor CSV que estructurará los datos en columnas, usando los nombres de campo (keys()) de los diccionarios en self.resultados.
+            writer.writeheader() # - Escribe la primera línea del archivo con los nombres de las columnas (como "evento", "reloj", "espera", etc.).
+            writer.writerows(self.resultados) # - Escribe todas las filas de la lista self.resultados, cada una representando un estado del sistema en algún instante de la simulación.
 
 # Realizamos una prueba manual
 if __name__ == "__main__":

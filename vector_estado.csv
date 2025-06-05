@@ -1,138 +1,52 @@
-iteracion,reloj,evento,rnd_llegada,prox_llegada,rnd_asignacion,tecnico_asignado,rnd_diagnostico,tiempo_diagnostico,hora_fin_diagnostico,importe,espera,tecnicos,cola,cupones
-0,8.39,Llegada,0.6474,-,0.3123,Técnico A,0.2806,11.56,19.95,3500,0.0,"['libre', 'libre', 'libre']","[0, 0, 0]",0
-1,11.8,Llegada,0.2206,-,0.6749,Técnico B,0.4427,14.66,26.45,3500,0.0,"['libre', 'ocupado', 'libre']","[0, 0, 0]",0
-2,19.25,Llegada,0.212,-,0.2146,Técnico A,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 0]",0
-3,19.95,Fin_atencion,-,-,-,Técnico A,-,-,19.95,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 1, 0]",0
-4,26.45,Fin_atencion,-,-,-,Técnico B,-,-,26.45,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 0]",0
-5,29.59,Llegada,0.6204,-,0.3128,Técnico A,-,-,-,3500,0.0,"['libre', 'ocupado', 'libre']","[0, 0, 0]",0
-6,32.44,Fin_atencion,-,-,-,Técnico A,-,-,32.44,3500,0.7,"['libre', 'ocupado', 'libre']","[0, 1, 0]",0
-7,35.84,Llegada,0.9956,-,0.7638,Técnico B,0.5516,15.31,51.15,3500,0.0,"['libre', 'ocupado', 'libre']","[0, 0, 0]",0
-8,40.04,Llegada,0.3776,-,0.9856,Técnico B,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 0]",0
-9,44.01,Fin_atencion,-,-,-,Técnico A,-,-,44.01,3500,2.85,"['libre', 'ocupado', 'ocupado']","[0, 0, 1]",0
-10,44.31,Llegada,0.3318,-,0.77,Técnico B,-,-,-,3500,0.0,"['libre', 'libre', 'ocupado']","[0, 0, 1]",0
-11,51.15,Fin_atencion,-,-,-,Técnico B,-,-,51.15,3500,0.0,"['libre', 'libre', 'ocupado']","[0, 0, 2]",0
-12,54.39,Llegada,0.8482,-,0.1342,Aprendiz,0.0754,20.75,75.14,1800,0.0,"['libre', 'libre', 'ocupado']","[0, 0, 1]",0
-13,60.65,Llegada,0.6473,-,0.1222,Aprendiz,-,-,-,1800,0.0,"['ocupado', 'libre', 'ocupado']","[0, 0, 1]",0
-14,68.98,Fin_atencion,-,-,-,Técnico B,-,-,68.98,3500,11.11,"['ocupado', 'libre', 'ocupado']","[1, 0, 1]",0
-15,71.83,Llegada,0.4845,-,0.8439,Técnico B,-,-,-,3500,0.0,"['ocupado', 'libre', 'ocupado']","[1, 0, 0]",0
-16,75.14,Fin_atencion,-,-,-,Aprendiz,-,-,75.14,1800,0.0,"['ocupado', 'libre', 'ocupado']","[1, 0, 1]",0
-17,78.5,Llegada,0.9615,-,0.6464,Técnico B,-,-,-,3500,0.0,"['ocupado', 'libre', 'ocupado']","[0, 0, 1]",0
-18,81.39,Fin_atencion,-,-,-,Técnico B,-,-,81.39,3500,24.67,"['ocupado', 'libre', 'ocupado']","[0, 0, 2]",0
-19,88.84,Llegada,0.9851,-,0.9797,Técnico B,-,-,-,3500,0.0,"['ocupado', 'libre', 'ocupado']","[0, 0, 1]",0
-20,91.9,Llegada,0.1771,-,0.201,Técnico A,0.3975,11.79,103.7,3500,0.0,"['ocupado', 'libre', 'ocupado']","[0, 0, 2]",0
-21,97.3,Fin_atencion,-,-,-,Técnico B,-,-,97.3,3500,9.57,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 2]",0
-22,99.86,Fin_atencion,-,-,-,Aprendiz,-,-,99.86,1800,14.49,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 1]",0
-23,102.7,Llegada,0.1443,-,0.689,Técnico B,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 1]",0
-24,103.7,Fin_atencion,-,-,-,Técnico A,-,-,103.7,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 2]",0
-25,106.7,Llegada,0.5506,-,0.7953,Técnico B,-,-,-,3500,0.0,"['libre', 'libre', 'ocupado']","[0, 0, 2]",0
-26,112.7,Fin_atencion,-,-,-,Técnico B,-,-,112.7,3500,18.79,"['libre', 'libre', 'ocupado']","[0, 0, 3]",0
-27,114.36,Llegada,0.5962,-,0.4185,Técnico A,0.6768,12.35,126.71,3500,0.0,"['libre', 'libre', 'ocupado']","[0, 0, 2]",0
-28,118.4,Llegada,0.6354,-,0.29,Técnico A,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 2]",0
-29,120.45,Llegada,0.7264,-,0.1291,Aprendiz,0.588,25.88,146.33,1800,0.0,"['libre', 'ocupado', 'ocupado']","[0, 1, 2]",0
-30,126.04,Llegada,0.0023,-,0.8166,Técnico B,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 2]",0
-31,126.71,Fin_atencion,-,-,-,Técnico A,-,-,126.71,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 3]",0
-32,128.07,Fin_atencion,-,-,-,Técnico B,-,-,128.07,3500,23.86,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 3]",0
-33,137.62,Llegada,0.8577,-,0.7852,Técnico B,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 2]",0
-34,137.78,Fin_atencion,-,-,-,Técnico A,-,-,137.78,3500,8.31,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 3]",0
-35,139.71,Llegada,0.6838,-,0.3455,Técnico A,0.8077,12.62,152.32,3500,0.0,"['ocupado', 'libre', 'ocupado']","[0, 0, 3]",0
-36,140.14,Fin_atencion,-,-,-,Técnico B,-,-,140.14,3500,25.37,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 3]",0
-37,142.87,Llegada,0.6456,-,0.4531,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 2]",0
-38,146.33,Fin_atencion,-,-,-,Aprendiz,-,-,146.33,1800,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 2]",0
-39,149.08,Llegada,0.5893,-,0.7329,Técnico B,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 1, 2]",0
-40,152.3,Llegada,0.6765,-,0.5944,Técnico A,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 1, 3]",0
-41,152.32,Fin_atencion,-,-,-,Técnico A,-,-,152.32,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 2, 3]",0
-42,155.44,Fin_atencion,-,-,-,Técnico B,-,-,155.44,3500,33.44,"['libre', 'ocupado', 'ocupado']","[0, 1, 3]",0
-43,158.45,Llegada,0.1296,-,0.7666,Técnico B,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 1, 2]",1500
-44,163.39,Fin_atencion,-,-,-,Técnico A,-,-,163.39,3500,9.45,"['libre', 'ocupado', 'ocupado']","[0, 1, 3]",1500
-45,166.6,Llegada,0.9395,-,0.9468,Técnico B,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 3]",1500
-46,171.79,Fin_atencion,-,-,-,Técnico B,-,-,171.79,3500,29.4,"['libre', 'ocupado', 'ocupado']","[0, 0, 4]",1500
-47,174.66,Fin_atencion,-,-,-,Técnico A,-,-,174.66,3500,11.09,"['libre', 'ocupado', 'ocupado']","[0, 0, 3]",1500
-48,176.97,Llegada,0.4714,-,0.1906,Técnico A,0.3412,11.68,188.65,3500,0.0,"['libre', 'libre', 'ocupado']","[0, 0, 3]",1500
-49,181.58,Llegada,0.9661,-,0.0407,Aprendiz,0.7576,27.58,209.15,1800,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 3]",1500
-50,183.83,Fin_atencion,-,-,-,Técnico B,-,-,183.83,3500,34.18,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 3]",1500
-51,187.3,Llegada,0.1907,-,0.3654,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 2]",3000
-52,188.65,Fin_atencion,-,-,-,Técnico A,-,-,188.65,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 2]",3000
-53,195.77,Llegada,0.3225,-,0.2187,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 2]",3000
-54,199.63,Fin_atencion,-,-,-,Técnico B,-,-,199.63,3500,34.75,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 2]",3000
-55,199.79,Llegada,0.0581,-,0.6052,Técnico B,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 1]",4500
-56,200.79,Fin_atencion,-,-,-,Técnico A,-,-,200.79,3500,1.36,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 2]",4500
-57,209.15,Fin_atencion,-,-,-,Aprendiz,-,-,209.15,1800,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 2]",4500
-58,211.07,Llegada,0.6798,-,0.4914,Técnico A,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 2]",4500
-59,212.64,Fin_atencion,-,-,-,Técnico A,-,-,212.64,3500,5.02,"['libre', 'ocupado', 'ocupado']","[0, 1, 2]",4500
-60,215.9,Fin_atencion,-,-,-,Técnico B,-,-,215.9,3500,41.18,"['libre', 'ocupado', 'ocupado']","[0, 0, 2]",4500
-61,222.39,Llegada,0.4279,-,0.1191,Aprendiz,0.8955,28.96,251.34,1800,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 1]",6000
-62,223.65,Fin_atencion,-,-,-,Técnico A,-,-,223.65,3500,1.57,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 1]",6000
-63,227.57,Llegada,0.2481,-,0.534,Técnico A,0.905,12.81,240.38,3500,0.0,"['ocupado', 'libre', 'ocupado']","[0, 0, 1]",6000
-64,230.8,Fin_atencion,-,-,-,Técnico B,-,-,230.8,3500,49.29,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 1]",6000
-65,233.63,Llegada,0.6566,-,0.217,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 0]",7500
-66,238.98,Llegada,0.3344,-,0.6833,Técnico B,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 0]",7500
-67,240.38,Fin_atencion,-,-,-,Técnico A,-,-,240.38,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 1]",7500
-68,243.24,Fin_atencion,-,-,-,Técnico B,-,-,243.24,3500,31.01,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 1]",7500
-69,249.29,Llegada,0.6549,-,0.26,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 0]",9000
-70,251.34,Fin_atencion,-,-,-,Aprendiz,-,-,251.34,1800,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 0]",9000
-71,252.44,Llegada,0.3379,-,0.271,Técnico A,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 1, 0]",9000
-72,252.79,Fin_atencion,-,-,-,Técnico A,-,-,252.79,3500,6.76,"['libre', 'ocupado', 'ocupado']","[0, 2, 0]",9000
-73,260.39,Fin_atencion,-,-,-,Técnico B,-,-,260.39,3500,4.26,"['libre', 'ocupado', 'ocupado']","[0, 1, 0]",9000
-74,263.03,Llegada,0.6928,-,0.4866,Técnico A,-,-,-,3500,0.0,"['libre', 'ocupado', 'libre']","[0, 1, 0]",9000
-75,264.57,Fin_atencion,-,-,-,Técnico A,-,-,264.57,3500,3.49,"['libre', 'ocupado', 'libre']","[0, 2, 0]",9000
-76,267.54,Llegada,0.9514,-,0.0382,Aprendiz,0.5434,25.43,292.97,1800,0.0,"['libre', 'ocupado', 'libre']","[0, 1, 0]",9000
-77,275.88,Fin_atencion,-,-,-,Técnico A,-,-,275.88,3500,12.14,"['ocupado', 'ocupado', 'libre']","[0, 1, 0]",9000
-78,276.42,Llegada,0.3298,-,0.4586,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'libre']","[0, 0, 0]",9000
-79,286.48,Llegada,0.0081,-,0.4983,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'libre']","[0, 1, 0]",9000
-80,288.05,Fin_atencion,-,-,-,Técnico A,-,-,288.05,3500,12.85,"['ocupado', 'ocupado', 'libre']","[0, 2, 0]",9000
-81,291.82,Llegada,0.5628,-,0.3598,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'libre']","[0, 1, 0]",9000
-82,292.97,Fin_atencion,-,-,-,Aprendiz,-,-,292.97,1800,0.0,"['ocupado', 'ocupado', 'libre']","[0, 2, 0]",9000
-83,296.42,Llegada,0.5991,-,0.2706,Técnico A,-,-,-,3500,0.0,"['libre', 'ocupado', 'libre']","[0, 2, 0]",9000
-84,300.14,Fin_atencion,-,-,-,Técnico A,-,-,300.14,3500,11.63,"['libre', 'ocupado', 'libre']","[0, 3, 0]",9000
-85,304.5,Llegada,0.9944,-,0.1079,Aprendiz,0.132,21.32,325.82,1800,0.0,"['libre', 'ocupado', 'libre']","[0, 2, 0]",9000
-86,311.9,Fin_atencion,-,-,-,Técnico A,-,-,311.9,3500,13.66,"['ocupado', 'ocupado', 'libre']","[0, 2, 0]",9000
-87,314.37,Llegada,0.8206,-,0.2282,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'libre']","[0, 1, 0]",9000
-88,319.58,Llegada,0.5294,-,0.2766,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'libre']","[0, 2, 0]",9000
-89,323.4,Fin_atencion,-,-,-,Técnico A,-,-,323.4,3500,20.09,"['ocupado', 'ocupado', 'libre']","[0, 3, 0]",9000
-90,325.82,Fin_atencion,-,-,-,Aprendiz,-,-,325.82,1800,0.0,"['ocupado', 'ocupado', 'libre']","[0, 2, 0]",9000
-91,331.2,Llegada,0.7661,-,0.3632,Técnico A,-,-,-,3500,0.0,"['libre', 'ocupado', 'libre']","[0, 2, 0]",9000
-92,333.84,Llegada,0.9752,-,0.1245,Aprendiz,0.8126,28.13,361.97,1800,0.0,"['libre', 'ocupado', 'libre']","[0, 3, 0]",9000
-93,334.58,Fin_atencion,-,-,-,Técnico A,-,-,334.58,3500,26.98,"['ocupado', 'ocupado', 'libre']","[0, 3, 0]",9000
-94,341.14,Llegada,0.7162,-,0.1569,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'libre']","[0, 2, 0]",9000
-95,346.5,Fin_atencion,-,-,-,Técnico A,-,-,346.5,3500,20.21,"['ocupado', 'ocupado', 'libre']","[0, 3, 0]",9000
-96,347.66,Llegada,0.0275,-,0.8445,Técnico B,0.9294,17.58,365.24,3500,0.0,"['ocupado', 'ocupado', 'libre']","[0, 2, 0]",9000
-97,354.54,Llegada,0.1385,-,0.788,Técnico B,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 2, 0]",9000
-98,359.2,Fin_atencion,-,-,-,Técnico A,-,-,359.2,3500,26.93,"['ocupado', 'ocupado', 'ocupado']","[0, 2, 1]",9000
-99,361.97,Fin_atencion,-,-,-,Aprendiz,-,-,361.97,1800,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 1]",9000
-100,364.66,Llegada,0.7082,-,0.9178,Técnico B,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 1, 1]",9000
-101,365.24,Fin_atencion,-,-,-,Técnico B,-,-,365.24,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 1, 2]",9000
-102,371.7,Fin_atencion,-,-,-,Técnico A,-,-,371.7,3500,28.0,"['libre', 'ocupado', 'ocupado']","[0, 1, 1]",9000
-103,374.9,Llegada,0.8064,-,0.5675,Técnico A,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 1]",9000
-104,377.0,Llegada,0.5378,-,0.0481,Aprendiz,0.8878,28.88,405.88,1800,0.0,"['libre', 'ocupado', 'ocupado']","[0, 1, 1]",9000
-105,378.77,Fin_atencion,-,-,-,Técnico B,-,-,378.77,3500,10.7,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 1]",9000
-106,384.3,Fin_atencion,-,-,-,Técnico A,-,-,384.3,3500,30.56,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 0]",9000
-107,384.45,Llegada,0.5262,-,0.3729,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 0]",10500
-108,386.98,Llegada,0.8345,-,0.2488,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 0]",10500
-109,393.15,Fin_atencion,-,-,-,Técnico B,-,-,393.15,3500,14.11,"['ocupado', 'ocupado', 'ocupado']","[0, 2, 0]",10500
-110,397.3,Fin_atencion,-,-,-,Técnico A,-,-,397.3,3500,9.4,"['ocupado', 'ocupado', 'libre']","[0, 2, 0]",10500
-111,398.71,Llegada,0.5701,-,0.0774,Aprendiz,-,-,-,1800,0.0,"['ocupado', 'ocupado', 'libre']","[0, 1, 0]",10500
-112,401.3,Llegada,0.2381,-,0.2689,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'libre']","[1, 1, 0]",10500
-113,405.88,Fin_atencion,-,-,-,Aprendiz,-,-,405.88,1800,0.0,"['ocupado', 'ocupado', 'libre']","[1, 2, 0]",10500
-114,408.47,Fin_atencion,-,-,-,Técnico A,-,-,408.47,3500,12.84,"['ocupado', 'ocupado', 'libre']","[0, 2, 0]",10500
-115,409.06,Llegada,0.4582,-,0.0082,Aprendiz,-,-,-,1800,0.0,"['ocupado', 'ocupado', 'libre']","[0, 1, 0]",10500
-116,419.61,Llegada,0.5025,-,0.3242,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'libre']","[1, 1, 0]",10500
-117,421.44,Fin_atencion,-,-,-,Técnico A,-,-,421.44,3500,21.49,"['ocupado', 'ocupado', 'libre']","[1, 2, 0]",10500
-118,426.26,Fin_atencion,-,-,-,Aprendiz,-,-,426.26,1800,7.17,"['ocupado', 'ocupado', 'libre']","[1, 1, 0]",10500
-119,428.78,Llegada,0.1325,-,0.5335,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'libre']","[0, 1, 0]",10500
-120,434.23,Llegada,0.4021,-,0.8956,Técnico B,0.5846,15.51,449.73,3500,0.0,"['ocupado', 'ocupado', 'libre']","[0, 2, 0]",10500
-121,434.26,Fin_atencion,-,-,-,Técnico A,-,-,434.26,3500,20.14,"['ocupado', 'ocupado', 'ocupado']","[0, 2, 0]",10500
-122,445.05,Llegada,0.3923,-,0.8589,Técnico B,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 0]",10500
-123,447.07,Fin_atencion,-,-,-,Técnico A,-,-,447.07,3500,14.64,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 1]",10500
-124,449.73,Fin_atencion,-,-,-,Técnico B,-,-,449.73,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 1]",10500
-125,451.54,Llegada,0.3391,-,0.5572,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 0]",10500
-126,451.81,Fin_atencion,-,-,-,Aprendiz,-,-,451.81,1800,17.21,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 0]",10500
-127,459.77,Fin_atencion,-,-,-,Técnico A,-,-,459.77,3500,18.29,"['libre', 'ocupado', 'ocupado']","[0, 1, 0]",10500
-128,460.36,Llegada,0.4016,-,0.4502,Técnico A,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 0]",10500
-129,463.73,Llegada,0.5084,-,0.0001,Aprendiz,0.8993,28.99,492.73,1800,0.0,"['libre', 'ocupado', 'ocupado']","[0, 1, 0]",10500
-130,466.67,Llegada,0.7061,-,0.1785,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 0]",10500
-131,466.88,Fin_atencion,-,-,-,Técnico B,-,-,466.88,3500,4.68,"['ocupado', 'ocupado', 'ocupado']","[0, 2, 0]",10500
-132,470.8,Llegada,0.5036,-,0.5425,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'libre']","[0, 2, 0]",10500
-133,471.32,Fin_atencion,-,-,-,Técnico A,-,-,471.32,3500,8.23,"['ocupado', 'ocupado', 'libre']","[0, 3, 0]",10500
-134,476.89,Llegada,0.2077,-,0.744,Técnico B,0.5006,15.0,491.89,3500,0.0,"['ocupado', 'ocupado', 'libre']","[0, 2, 0]",10500
-135,483.22,Fin_atencion,-,-,-,Técnico A,-,-,483.22,3500,10.97,"['ocupado', 'ocupado', 'ocupado']","[0, 2, 0]",10500
-136,483.22,Fin simulacion,-,-,-,-,-,-,-,-,-,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 0]",10500
+iteracion,reloj,evento,rnd_llegada,prox_llegada,rnd_asignacion,tecnico_asignado,rnd_diagnostico,tiempo_diagnostico,hora_fin_diagnostico,importe,espera,tecnicos,cola,id_cliente,estado_cliente,espera_acumulada,tiempo_atencion,cupones
+0,0,,,,,,,,,,,"['', '', '']","['', '', '']",---,---,---,---,0
+1,8.39,Llegada,0.6474,-,0.3123,Técnico A,0.2806,11.56,19.95,3500,0.0,"['libre', 'libre', 'libre']","[0, 0, 0]",1,esperando,-,0,0
+2,11.8,Llegada,0.2206,-,0.6749,Técnico B,0.4427,14.66,26.45,3500,0.0,"['libre', 'ocupado', 'libre']","[0, 0, 0]",2,esperando,-,0,0
+3,19.25,Llegada,0.212,-,0.2146,Técnico A,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 0]",3,esperando,-,0,0
+4,19.95,Fin_atencion,-,-,-,Técnico A,-,-,19.95,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 1, 0]",1,atendiendo,0.0,0,0
+5,26.45,Fin_atencion,-,-,-,Técnico B,-,-,26.45,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 0]",2,atendiendo,0.0,0,0
+6,29.59,Llegada,0.6204,-,0.3128,Técnico A,-,-,-,3500,0.0,"['libre', 'ocupado', 'libre']","[0, 0, 0]",4,esperando,-,0,0
+7,32.44,Fin_atencion,-,-,-,Técnico A,-,-,32.44,3500,0.7,"['libre', 'ocupado', 'libre']","[0, 1, 0]",3,atendiendo,0.7,0,0
+8,35.84,Llegada,0.9956,-,0.7638,Técnico B,0.5516,15.31,51.15,3500,0.0,"['libre', 'ocupado', 'libre']","[0, 0, 0]",5,esperando,-,0,0
+9,40.04,Llegada,0.3776,-,0.9856,Técnico B,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 0]",6,esperando,-,0,0
+10,44.01,Fin_atencion,-,-,-,Técnico A,-,-,44.01,3500,2.85,"['libre', 'ocupado', 'ocupado']","[0, 0, 1]",4,atendiendo,2.85,0,0
+11,44.31,Llegada,0.3318,-,0.77,Técnico B,-,-,-,3500,0.0,"['libre', 'libre', 'ocupado']","[0, 0, 1]",7,esperando,-,0,0
+12,51.15,Fin_atencion,-,-,-,Técnico B,-,-,51.15,3500,0.0,"['libre', 'libre', 'ocupado']","[0, 0, 2]",5,atendiendo,0.0,0,0
+13,54.39,Llegada,0.8482,-,0.1342,Aprendiz,0.0754,20.75,75.14,1800,0.0,"['libre', 'libre', 'ocupado']","[0, 0, 1]",8,esperando,-,0,0
+14,60.65,Llegada,0.6473,-,0.1222,Aprendiz,-,-,-,1800,0.0,"['ocupado', 'libre', 'ocupado']","[0, 0, 1]",9,esperando,-,0,0
+15,68.98,Fin_atencion,-,-,-,Técnico B,-,-,68.98,3500,11.11,"['ocupado', 'libre', 'ocupado']","[1, 0, 1]",6,atendiendo,11.11,0,0
+16,71.83,Llegada,0.4845,-,0.8439,Técnico B,-,-,-,3500,0.0,"['ocupado', 'libre', 'ocupado']","[1, 0, 0]",10,esperando,-,0,0
+17,75.14,Fin_atencion,-,-,-,Aprendiz,-,-,75.14,1800,0.0,"['ocupado', 'libre', 'ocupado']","[1, 0, 1]",8,atendiendo,0.0,0,0
+18,78.5,Llegada,0.9615,-,0.6464,Técnico B,-,-,-,3500,0.0,"['ocupado', 'libre', 'ocupado']","[0, 0, 1]",11,esperando,-,0,0
+19,81.39,Fin_atencion,-,-,-,Técnico B,-,-,81.39,3500,24.67,"['ocupado', 'libre', 'ocupado']","[0, 0, 2]",7,atendiendo,24.67,0,0
+20,88.84,Llegada,0.9851,-,0.9797,Técnico B,-,-,-,3500,0.0,"['ocupado', 'libre', 'ocupado']","[0, 0, 1]",12,esperando,-,0,0
+21,91.9,Llegada,0.1771,-,0.201,Técnico A,0.3975,11.79,103.7,3500,0.0,"['ocupado', 'libre', 'ocupado']","[0, 0, 2]",13,esperando,-,0,0
+22,97.3,Fin_atencion,-,-,-,Técnico B,-,-,97.3,3500,9.57,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 2]",10,atendiendo,9.57,0,0
+23,99.86,Fin_atencion,-,-,-,Aprendiz,-,-,99.86,1800,14.49,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 1]",9,atendiendo,14.49,0,0
+24,102.7,Llegada,0.1443,-,0.689,Técnico B,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 1]",14,esperando,-,0,0
+25,103.7,Fin_atencion,-,-,-,Técnico A,-,-,103.7,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 2]",13,atendiendo,0.0,0,0
+26,106.7,Llegada,0.5506,-,0.7953,Técnico B,-,-,-,3500,0.0,"['libre', 'libre', 'ocupado']","[0, 0, 2]",15,esperando,-,0,0
+27,112.7,Fin_atencion,-,-,-,Técnico B,-,-,112.7,3500,18.79,"['libre', 'libre', 'ocupado']","[0, 0, 3]",11,atendiendo,18.79,0,0
+28,114.36,Llegada,0.5962,-,0.4185,Técnico A,0.6768,12.35,126.71,3500,0.0,"['libre', 'libre', 'ocupado']","[0, 0, 2]",16,esperando,-,0,0
+29,118.4,Llegada,0.6354,-,0.29,Técnico A,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 2]",17,esperando,-,0,0
+30,120.45,Llegada,0.7264,-,0.1291,Aprendiz,0.588,25.88,146.33,1800,0.0,"['libre', 'ocupado', 'ocupado']","[0, 1, 2]",18,esperando,-,0,0
+31,126.04,Llegada,0.0023,-,0.8166,Técnico B,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 2]",19,esperando,-,0,0
+32,126.71,Fin_atencion,-,-,-,Técnico A,-,-,126.71,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 3]",16,atendiendo,0.0,0,0
+33,128.07,Fin_atencion,-,-,-,Técnico B,-,-,128.07,3500,23.86,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 3]",12,atendiendo,23.86,0,0
+34,137.62,Llegada,0.8577,-,0.7852,Técnico B,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 2]",20,esperando,-,0,0
+35,137.78,Fin_atencion,-,-,-,Técnico A,-,-,137.78,3500,8.31,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 3]",17,atendiendo,8.31,0,0
+36,139.71,Llegada,0.6838,-,0.3455,Técnico A,0.8077,12.62,152.32,3500,0.0,"['ocupado', 'libre', 'ocupado']","[0, 0, 3]",21,esperando,-,0,0
+37,140.14,Fin_atencion,-,-,-,Técnico B,-,-,140.14,3500,25.37,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 3]",14,atendiendo,25.37,0,0
+38,142.87,Llegada,0.6456,-,0.4531,Técnico A,-,-,-,3500,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 0, 2]",22,esperando,-,0,0
+39,146.33,Fin_atencion,-,-,-,Aprendiz,-,-,146.33,1800,0.0,"['ocupado', 'ocupado', 'ocupado']","[0, 1, 2]",18,atendiendo,0.0,0,0
+40,149.08,Llegada,0.5893,-,0.7329,Técnico B,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 1, 2]",23,esperando,-,0,0
+41,152.3,Llegada,0.6765,-,0.5944,Técnico A,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 1, 3]",24,esperando,-,0,0
+42,152.32,Fin_atencion,-,-,-,Técnico A,-,-,152.32,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 2, 3]",21,atendiendo,0.0,0,0
+43,155.44,Fin_atencion,-,-,-,Técnico B,-,-,155.44,3500,33.44,"['libre', 'ocupado', 'ocupado']","[0, 1, 3]",15,atendiendo,33.44,0,0
+44,158.45,Llegada,0.1296,-,0.7666,Técnico B,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 1, 2]",25,esperando,-,0,1500
+45,163.39,Fin_atencion,-,-,-,Técnico A,-,-,163.39,3500,9.45,"['libre', 'ocupado', 'ocupado']","[0, 1, 3]",22,atendiendo,9.45,0,1500
+46,166.6,Llegada,0.9395,-,0.9468,Técnico B,-,-,-,3500,0.0,"['libre', 'ocupado', 'ocupado']","[0, 0, 3]",26,esperando,-,0,1500
+47,171.79,Fin_atencion,-,-,-,Técnico B,-,-,171.79,3500,29.4,"['libre', 'ocupado', 'ocupado']","[0, 0, 4]",19,atendiendo,29.4,0,1500
+48,174.66,Fin_atencion,-,-,-,Técnico A,-,-,174.66,3500,11.09,"['libre', 'ocupado', 'ocupado']","[0, 0, 3]",24,atendiendo,11.09,0,1500
+49,176.97,Llegada,0.4714,-,0.1906,Técnico A,0.3412,11.68,188.65,3500,0.0,"['libre', 'libre', 'ocupado']","[0, 0, 3]",27,esperando,-,0,1500
+50,176.97,Fin simulacion,-,-,-,-,-,-,-,-,-,"['libre', 'ocupado', 'ocupado']","[0, 0, 3]",24,finalizado,11.09,11.27,1500
